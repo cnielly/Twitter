@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' treatTweets("The new iPhone sucks")
+#' treatTweet("The new iPhone sucks")
 #' }
-treatTweets <- function(x) {tolower(str_replace_all(x,"[^[:graph:]]", " "))}
+treatTweet <- function(x) {tolower(str_replace_all(x,"[^[:graph:]]", " "))}
 
