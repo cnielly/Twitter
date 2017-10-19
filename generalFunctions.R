@@ -3,7 +3,7 @@
 
 #' To treat the tweets
 #'
-#' @param x a string
+#' @param x a vector of string
 #'
 #' @return a string
 #' @export
@@ -21,19 +21,21 @@ treatTweet <- function(x) {tolower(str_replace_all(x,"[^[:graph:]]", " "))}
 #'
 #' @return a list of tweets
 #' @export
+#' @import twitter
+#' @import stringr
 #'
 #' @examples
-getTweets <- function(searchWords = c("RedStarFC"), language = "fr"){
+getTweets <- function(searchWords = c("RedStarFC"), language = "fr", n = 1000){
   
   tweets <- c()
   
   # Retrieving the tweets
-  for (w in words){
-    tweets = c(tweets, searchTwitter(w, n=1000, lang=language))
+  for (w in searchWords){
+    tweets = c(tweets, searchTwitter(w, n, lang=language))
   }
   
   # Treating the data
-  tweets = sapply(tweets, function(x) treatTweets(x$getText())) # To treat the tweets
+  tweets = sapply(tweets, function(x) treatTweet(x$getText())) # To treat the tweets
   
-  return tweets
+  return(tweets)
 }
