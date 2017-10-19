@@ -1,0 +1,54 @@
+---
+title: "README"
+author: "Benoit Audigier"
+date: "19 octobre 2017"
+output: html_document
+---
+
+<h1>Installation</h1>
+
+Tuto : https://www.r-bloggers.com/setting-up-the-twitter-r-package-for-text-analytics/
+https://www.r-bloggers.com/setting-up-the-twitter-r-package-for-text-analytics/
+https://colinpriest.com/2015/07/04/tutorial-using-r-and-twitter-to-analyse-consumer-sentiment/
+
+```{r}
+install.packages("twitteR")
+```
+Perso : 
+Name : Test
+Username : tests123
+Name of the app : 123test123
+Link to the app : https://apps.twitter.com/app/14366284
+Tokens in hidden chunk.
+```{r}
+library(twitteR)
+consumer_key <- "TKBdocjGFXRyX7G29oHEwPBD1"
+consumer_secret <- "jYNmDeCQeoOyVHm5fxtnLzXGnFZJmBHpc9vyz7sprKtXqmwYGC"
+access_token <- "920274707332640768-MzeAcdB2SiOsv6Ib9SLvRMdc3SdKTuQ"
+access_secret <- "sxiHhSCd0lnwt2biCdJ0Gdny5QZPaZTQ2OeFN05yZndin"
+setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+```
+
+
+<h1>TODO LIST</h1>
+
+Print the evolution of the #hastag with time (day, week, month, year)
+```{r}
+
+```
+
+
+Map the users of the #hastag following their localisation
+```{r}
+
+```
+
+Word forest associated to the #hastag
+```{r}
+
+```
+
+Sentiments of the people with the #hastag
+https://colinpriest.com/2015/07/04/tutorial-using-r-and-twitter-to-analyse-consumer-sentiment/
+
+
