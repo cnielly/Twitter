@@ -27,6 +27,10 @@ consumer_secret <- "jYNmDeCQeoOyVHm5fxtnLzXGnFZJmBHpc9vyz7sprKtXqmwYGC"
 access_token <- "920274707332640768-MzeAcdB2SiOsv6Ib9SLvRMdc3SdKTuQ"
 access_secret <- "sxiHhSCd0lnwt2biCdJ0Gdny5QZPaZTQ2OeFN05yZndin"
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
+rm(access_secret)
+rm(access_token)
+rm(consumer_key)
+rm(consumer_secret)
 ```
 
 
