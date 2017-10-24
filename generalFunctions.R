@@ -1,5 +1,5 @@
 ### The functions used by the other files
-
+library(stringr)
 
 #' To treat the tweets
 #'
