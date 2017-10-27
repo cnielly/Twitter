@@ -3,6 +3,8 @@
 
 #source("generalFunctions.R")
 library(lubridate)
+library(ggplot2)
+library(dplyr)
 
 ### Example of grid
 # xa <- seq(1,10, length.out=20)
@@ -28,43 +30,31 @@ begin <- sortedHH$Var1[1]
 #Création de nouvelles colonnes
 sortedHH <- sortedHH %>% mutate(date_time = ymd_hms(Var1))
 sortedHH <- sortedHH %>% mutate(day = as.Date(date_time))
-sortedHH <- sortedHH %>% mutate(hour = strsplit(as.character(date_time), " "))
+#sortedHH <- sortedHH %>% mutate(hour = strsplit(as.character(date_time), " "))
+sortedHH <- sortedHH %>% mutate(hourGoodFormat = format(date_time, "%H:%M"))
 # sortedHH <- sortedHH %>% mutate(hour = tail(hour[[]][2]))
-for (i in seq(1,length(sortedHH$hour)))
-  sortedHH$hour[[i]] <- sortedHH$hour[[i]][2]
+#for (i in seq(1,length(sortedHH$hour)))
+ # sortedHH$hour[[i]] <- sortedHH$hour[[i]][2]
 
 #Dessin Gaph
-a = sortedHH[["hour"]]
+a = sortedHH[["hourGoodFormat"]]
 b = sortedHH[["day"]]
 data2 = expand.grid(X=a, Y=b)
-data$Z <- matrix(sortedHH$Freq, nrow = 181, ncol = 181)
+#data2$Z <- matrix(sortedHH$Freq, nrow = 181, ncol = 181)
 
 #time <- seq(chron::as.chron(as.character(begin)), chron::as.chron(as.character(end)), by = 0.02083333333333333333) # unit is a day
 # values <- integer(length(time))
 
-### todo : code the x, y and z for heatmap with values on sortedHH
+
+# drawHeatMap <- function(data){
+#   ggplot(data, aes(X, Y, Z)) + geom_tile(aes(fill = Z)) + 
+#     theme_bw() + 
+#     scale_fill_gradient(low="white", high="blue") 
+# }
 
 
-drawHeatMap <- function(data){
-  ggplot(data, aes(X, Y, Z)) + geom_tile(aes(fill = Z)) + 
-    theme_bw() + 
-    scale_fill_gradient(low="white", high="blue") 
-}
-
-# d1 <- "2017-06-03"
-# d2 <- "2017-06-04"
-# d3 <- "2017-06-05"
-# x = c(as.Date(d1), as.Date(d2), as.Date(d3))
-# x1 = c(d1,d2,d3)
-# h1 <- "08:00:00"
-# h2 <- "08:30:00"
-# y = c(as.character(hms(h1)), as.character(hms(h2)))
-# y2 = c(h1,h2)
-# 
-# data = expand.grid(X=x, Y=y)
-# data$Z <- matrix(c(1,2,3,4,5,6), nrow = 6, ncol = 1)
-# 
-# drawHeatMap(data)
-
-p <- ggplot(sortedHH, aes(x = unlist(hour), y = Freq)) + geom_point() + scale_x_continuous(name, breaks, labels, limits, trans)
-p 
+p <- ggplot(sortedHH, aes(x = hourGoodFormat, y = Freq)) +
+  geom_point() +
+  theme(axis.text.x=element_text(angle=90)) +
+  scale_x_discrete(breaks = c("00:00","02:00", "04:00", "06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00"))
+p
