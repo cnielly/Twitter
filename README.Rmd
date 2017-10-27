@@ -12,7 +12,7 @@ https://www.r-bloggers.com/setting-up-the-twitter-r-package-for-text-analytics/
 https://colinpriest.com/2015/07/04/tutorial-using-r-and-twitter-to-analyse-consumer-sentiment/
 
 ```{r}
-install.packages("twitteR")
+# install.packages("twitteR")
 ```
 Perso : 
 Name : Test
