@@ -6,6 +6,7 @@ library(RColorBrewer)
 
 #' Draw a word cloud from tweets
 #'
+#' @param searchWords the words used to retrieve the tweets, must be improved.
 #' @param tweets from getTweets
 #' @param language fr or en
 #'
