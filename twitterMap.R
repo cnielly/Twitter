@@ -169,8 +169,8 @@ trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 plotMap <- function (userName, fileName, toPrintLL, userLL){
   #colors
   cols = brewer.pal(7,"Set2")
-  bckg = "gray"
-  continents = "white"
+  bckg = "black"
+  continents = "gray"
   
   # pdf(fileName,height=6,width=10)
   data(worldMapEnv)
