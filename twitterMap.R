@@ -10,7 +10,7 @@ source("generalFunctions.R")
 #'
 #' @return nothing
 #' @export
-#' @import twitteR maps geosphere RColorBrewer
+@import twitteR maps geosphere RColorBrewer
 #' 
 #' library(twitteR)
 #' library(maps)
