@@ -1,8 +1,5 @@
 ### from http://biostat.jhsph.edu/~jleek/code/twitterMap.R
-# source("generalFunctions.R")
-library(maps)
-library(geosphere)
-library(RColorBrewer)
+source("generalFunctions.R")
 
 #' Draws the map of the followers
 #'

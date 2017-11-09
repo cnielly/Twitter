@@ -5,6 +5,17 @@ library(dplyr)
 library(plyr)
 library(tidyr)
 
+# drawWordCloud
+library(stringr)
+library(tm)
+library(wordcloud)
+library(RColorBrewer)
+
+# drawTwitterMap
+library(maps)
+library(geosphere)
+library(RColorBrewer)
+
 initializeStuff <- function(){
   consumer_key <- "TKBdocjGFXRyX7G29oHEwPBD1"
   consumer_secret <- "jYNmDeCQeoOyVHm5fxtnLzXGnFZJmBHpc9vyz7sprKtXqmwYGC"
