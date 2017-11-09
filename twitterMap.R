@@ -24,15 +24,15 @@ twitterMap <- function(userName,userLocation=NULL,nMax = 1000,plotType=c("follow
   cat("Getting data from Twitter, this may take a moment.\n")
   tmp = getUser(userName)
   if(is.null(userLocation)){
-    userLocation = location(tmp)
+    userLocation = as.data.frame(tmp)$location
     userLocation = trim(userLocation)
     if(nchar(userLocation) < 2){stop("We can not find your location from Twitter")}
   }
   
   followers=tmp$getFollowers(n=nMax)
-  followersLocation = sapply(followers,function(x){location(x)})
+  followersLocation = sapply(followers,function(x){as.data.frame(x)$location})
   following = tmp$getFriends(n=nMax)
-  followingLocation = sapply(following,function(x){location(x)})
+  followingLocation = sapply(following,function(x){as.data.frame(x)$location})
   
   
   # Load the geographic data
@@ -169,10 +169,10 @@ trim <- function (x) gsub("^\\s+|\\s+$", "", x)
 plotMap <- function (userName, fileName, toPrintLL, userLL){
   #colors
   cols = brewer.pal(7,"Set2")
-  bckg = "black"
-  continents = "#191919"
+  bckg = "gray"
+  continents = "white"
   
-  pdf(fileName,height=6,width=10)
+  # pdf(fileName,height=6,width=10)
   data(worldMapEnv)
   map('world',col=continents,bg=bckg,fill=T,mar=rep(0,4),border=0)
   
@@ -187,5 +187,5 @@ plotMap <- function (userName, fileName, toPrintLL, userLL){
   }
   
   legend(-180,0,legend = c(paste("Asia",sum(toPrintLL[,4]==1)),paste("Africa",sum(toPrintLL[,4]==2)),paste("N. America",sum(toPrintLL[,4]==3)),paste("S. America",sum(toPrintLL[,4]==4)),paste("Australia/N.Z.",sum(toPrintLL[,4]==5)),paste("Europe",sum(toPrintLL[,4]==6))),text.col=cols[1:6],bg=bckg,cex=0.75)
-  dev.off()
+  # dev.off()
 }
