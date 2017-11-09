@@ -1,10 +1,10 @@
 ### from http://biostat.jhsph.edu/~jleek/code/twitterMap.R
-source("generalFunctions.R")
+# source("generalFunctions.R")
 library(maps)
 library(geosphere)
 library(RColorBrewer)
 
-#' Drarws the map of the followers
+#' Draws the map of the followers
 #'
 #' @param userName name of the user you want to map
 #' @param userLocation if it is not filled on twitter
@@ -91,37 +91,6 @@ twitterMap <- function(userName,userLocation=NULL,nMax = 1000,plotType=c("follow
   if(plotType=="following"){
     plotMap(userName, paste(userName, "Following.pdf", sep = "_"), followingLL, userLL)
   }
-  
-  # Both followers and following
-  # if(plotType=="both"){
-  #   pdf(fileName,height=12,width=10)
-  #   data(worldMapEnv)
-  #   par(mfrow=c(2,1),mar=rep(0,4))
-  #   map('world',col=continents,bg=bckg,fill=T,mar=rep(0,4),border=0)
-  #   
-  #   mtext(paste("@",userName," Follower Map",sep=""),col="lightgrey")
-  #   nFollowers = dim(followersLL)[1]
-  #   for(i in 1:nFollowers){
-  #     greatC = getGreatCircle(userLL,followersLL[i,1:2])
-  #     lines(greatC,col=cols[followersLL[i,4]],lwd=0.8)
-  #   }
-  #   
-  #   legend(-180,0,legend = c(paste("Asia",sum(followersLL[,4]==1)),paste("Africa",sum(followersLL[,4]==2)),paste("N. America",sum(followersLL[,4]==3)),paste("S. America",sum(followersLL[,4]==4)),paste("Australia/N.Z.",sum(followersLL[,4]==5)),paste("Europe",sum(followersLL[,4]==6))),text.col=cols[1:6],bg=bckg,cex=0.75)
-  #   
-  #   
-  #   map('world',col=continents,bg=bckg,fill=T,mar=rep(0,4),border=0)
-  #   mtext(paste("@",userName," Following Map",sep=""),col="lightgrey")
-  #   nFollowing = dim(followingLL)[1]
-  #   for(i in 1:nFollowing){
-  #     greatC = getGreatCircle(userLL,followingLL[i,1:2])
-  #     lines(greatC,col=cols[followingLL[i,4]],lwd=0.8)
-  #   }
-  #   
-  #   legend(-180,0,legend = c(paste("Asia",sum(followingLL[,4]==1)),paste("Africa",sum(followingLL[,4]==2)),paste("N. America",sum(followingLL[,4]==3)),paste("S. America",sum(followingLL[,4]==4)),paste("Australia/N.Z.",sum(followingLL[,4]==5)),paste("Europe",sum(followingLL[,4]==6))),text.col=cols[1:6],bg=bckg,cex=0.75)
-  #   
-  #   # mtext("Created by @simplystats twitterMap",side=1,adj=1,cex=0.8,col="grey")
-  #   dev.off()
-  # }
   
 }
 

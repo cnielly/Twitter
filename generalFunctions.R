@@ -42,7 +42,7 @@ treatTweet <- function(x) {tolower(str_replace_all(x,"[^[:graph:]]", " "))}
 #' @import stringr
 #'
 #' @examples
-getTweets <- function(searchWords = c("RedStarFC"), language = "fr", n = 1000, getOnlyText = TRUE){
+getTweets <- function(searchWords = c("RedStarFC"), language = "en", n = 1000, getOnlyText = TRUE){
   
   tweets <- c()
   
