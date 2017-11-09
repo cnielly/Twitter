@@ -1,8 +1,3 @@
-#source("generalFunctions.R")
-library(lubridate)
-library(ggplot2)
-library(dplyr)
-
 #' Plot the number of tweets during the day
 #'
 #' @param tweets 

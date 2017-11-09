@@ -1,9 +1,3 @@
-source("generalFunctions.R")
-library(stringr)
-library(tm)
-library(wordcloud)
-library(RColorBrewer)
-
 #' Draw a word cloud from tweets
 #'
 #' @param searchWords the words used to retrieve the tweets, must be improved.

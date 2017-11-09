@@ -1,4 +1,6 @@
 ### The functions used by the other files
+
+# generalFunctions file
 library(twitteR)
 library(stringr)
 library(dplyr)
@@ -11,10 +13,22 @@ library(tm)
 library(wordcloud)
 library(RColorBrewer)
 
+#drawTwitterHeatMap
+library(lubridate)
+library(ggplot2)
+library(dplyr)
+
 # drawTwitterMap
+library(twitteR)
 library(maps)
 library(geosphere)
 library(RColorBrewer)
+
+# sourcing all the files
+source("drawWordCloud.R")
+source("drawTwitterHeatMap.R")
+source("sentimentAnalysis.R")
+source("twitterMap.R")
 
 initializeStuff <- function(){
   consumer_key <- "TKBdocjGFXRyX7G29oHEwPBD1"
