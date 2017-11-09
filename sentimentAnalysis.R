@@ -12,16 +12,16 @@
 
 
 # if (!require('pacman')) install.packages('pacman&')
-# pacman::p_load(devtools, installr)
+pacman::p_load(devtools, installr)
 # install.Rtools()
 # install_url('http://cran.r-project.org/src/contrib/Archive/Rstem/Rstem_0.4-1.tar.gz')
 # install_url('http://cran.r-project.org/src/contrib/Archive/sentiment/sentiment_0.2.tar.gz')
 # 
 # 
 # if (!require('pacman')) install.packages('pacman')
-# pacman::p_load(twitteR, sentiment, plyr, ggplot2, wordcloud, RColorBrewer, httpuv, RCurl, base64enc)
-# 
-# options(RCurlOptions = list(cainfo = system.file('CurlSSL', 'cacert.pem', package = 'RCurl')))
+pacman::p_load(twitteR, sentiment, plyr, ggplot2, wordcloud, RColorBrewer, httpuv, RCurl, base64enc)
+#
+options(RCurlOptions = list(cainfo = system.file('CurlSSL', 'cacert.pem', package = 'RCurl')))
 
 
 
@@ -31,7 +31,7 @@
 ### RETRIEVE THE DATA
 
 # harvest some tweets
-some_tweets = searchTwitter('RedStarFC', n=10000, lang='fr')
+some_tweets = searchTwitter('RedStarFC', n=10000, lang='en')
 
 # get the text
 some_txt = sapply(some_tweets, function(x) x$getText())
