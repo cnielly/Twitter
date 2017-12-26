@@ -1,5 +1,3 @@
-source("generalFunctions.R")
-
 #' Draw a word cloud from tweets
 #'
 #' @param searchWords the words used to retrieve the tweets

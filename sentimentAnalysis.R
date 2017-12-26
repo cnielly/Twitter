@@ -10,11 +10,7 @@ sentimentAnalysis <- function(tweets){
 
   ### RETRIEVE THE DATA (only the text is interesting here)
   
-  txt = sapply(tweets, function(x) x$getText())
-  
-  
-  
-  
+  txt = tweets$text
   
   
   ### CLEAN UP THE TEXT
@@ -83,45 +79,38 @@ sentimentAnalysis <- function(tweets){
   # sort data frame
   sent_df = within(sent_df, emotion <- factor(emotion, levels=names(sort(table(emotion), decreasing=TRUE))))
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  ### PLOTS 
+  return(list("s_df" = sent_df, "txt" = txt, "emotion" = emotion))
+}
+
+printEmotion <- function(sent_df){
   
   # plot distribution of emotions
   ggplot(sent_df, aes(x=emotion)) +
     geom_bar(aes(y=..count.., fill=emotion)) +
     scale_fill_brewer(palette='Dark2') +
     labs(x='emotion categories', y='number of tweets') +
-    ggtitle('Sentiment Analysis of Tweets about RedStarFC\n(classification by emotion)') +
+    ggtitle('Sentiment Analysis of Tweets about the word entered\n(classification by emotion)') +
     theme(plot.title = element_text(size=12, face='bold'))
   
+
+}
+
+printPolarity <- function(sent_df){
   
   # plot distribution of polarity
   ggplot(sent_df, aes(x=polarity)) +
     geom_bar(aes(y=..count.., fill=polarity)) +
     scale_fill_brewer(palette='RdGy') +
     labs(x='polarity categories', y='number of tweets') +
-    ggtitle('Sentiment Analysis of Tweets about RedStarFC\n(classification by polarity)') +
+    ggtitle('Sentiment Analysis of Tweets about the word entered\n(classification by polarity)') +
     theme(plot.title = element_text(size=12, face='bold'))
-  
-  
-  
-  
-  
-  
-  
-  ### WORDCLOUD
+}
+
+printEmotionWordCloud <- function(sent_df, txt, emotion){
   
   # Separate the text by emotions and visualize the words with a comparison cloud
   # separating text by emotion
+  sent_df = as.data.frame(sent_df)
   emos = levels(factor(sent_df$emotion))
   nemo = length(emos)
   emo.docs = rep('', nemo)
@@ -140,11 +129,6 @@ sentimentAnalysis <- function(tweets){
   colnames(tdm) = emos
   
   # comparison word cloud
-  comparison.cloud(tdm, colors = brewer.pal(nemo, 'Dark2'),
-                   scale = c(3,.5), random.order = FALSE, title.size = 1.5)
-  
+  comparison.cloud(tdm, colors = brewer.pal(nemo, 'Dark2'), random.order = FALSE, title.size = 1.5)
   
 }
-
-
-

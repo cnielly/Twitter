@@ -18,11 +18,19 @@ library(lubridate)
 library(ggplot2)
 library(dplyr)
 
-# drawTwitterMap
+# rl
 library(twitteR)
 library(maps)
 library(geosphere)
 library(RColorBrewer)
+
+# sentimentAnalysis
+if (!require('pacman')) install.packages('pacman&')
+pacman::p_load(devtools)
+# install.Rtools()
+if (!require('pacman')) install.packages('pacman')
+pacman::p_load(twitteR, sentiment, plyr, ggplot2, wordcloud, RColorBrewer, httpuv, RCurl, base64enc, stringr, dplyr, tidyr, stringr, tm, lubridate, maps, geosphere, shinythemes)
+options(RCurlOptions = list(cainfo = system.file('CurlSSL', 'cacert.pem', package = 'RCurl')))
 
 # sourcing all the files
 source("drawWordCloud.R")
@@ -31,10 +39,10 @@ source("sentimentAnalysis.R")
 source("twitterMap.R")
 
 initializeStuff <- function(){
-  consumer_key <- "TKBdocjGFXRyX7G29oHEwPBD1"
-  consumer_secret <- "jYNmDeCQeoOyVHm5fxtnLzXGnFZJmBHpc9vyz7sprKtXqmwYGC"
-  access_token <- "920274707332640768-MzeAcdB2SiOsv6Ib9SLvRMdc3SdKTuQ"
-  access_secret <- "sxiHhSCd0lnwt2biCdJ0Gdny5QZPaZTQ2OeFN05yZndin"
+  consumer_key <- "mZVqZrNSR4yk54yTbpUlVYVda"
+  consumer_secret <- "t3SBazLWwJ3NGqCnwdMTEfM3R67PyeAcdN0UefOqQFFlPuD7E2"
+  access_token <- "920274707332640768-Jqm0YA2RQyYcYGBsYRJlXNdxElW3dEq"
+  access_secret <- "5dEeDUZV1qcPN2tDOM1OgIjewNa8RbeqDyNCd7d581Nnu"
   setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
   rm(access_secret)
   rm(access_token)
@@ -83,3 +91,7 @@ getTweets <- function(searchWords = c("RedStarFC"), language = "en", n = 1000, g
   return(tweets)
 }
 
+source("ui.R")
+source("server.R")
+
+runApp(".")

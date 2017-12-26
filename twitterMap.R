@@ -1,6 +1,3 @@
-### from http://biostat.jhsph.edu/~jleek/code/twitterMap.R
-source("generalFunctions.R")
-
 #' Draws the map of the followers
 #'
 #' @param userName name of the user you want to map
@@ -10,7 +7,7 @@ source("generalFunctions.R")
 #'
 #' @return nothing
 #' @export
-@import twitteR maps geosphere RColorBrewer
+#' @import twitteR maps geosphere RColorBrewer
 #' 
 #' library(twitteR)
 #' library(maps)
@@ -18,7 +15,7 @@ source("generalFunctions.R")
 #' library(RColorBrewer)
 #'
 #' @examples
-twitterMap <- function(userName,userLocation=NULL,nMax = 1000,plotType=c("followers","both","following")){
+twitterMap <- function(userName,userLocation=NULL,nMax = 5000,plotType=c("followers","both","following")){
   
   # Get location data
   cat("Getting data from Twitter, this may take a moment.\n")
